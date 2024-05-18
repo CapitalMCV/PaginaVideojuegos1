@@ -1,0 +1,44 @@
+.banner {
+    background-color: #eee;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories {
+    padding: 2em;
+    background-color: #f9f9f9;
+}
+
+.category-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.category-item {
+    text-align: center;
+    margin: 1em 15em;
+}
+
+.category-item img {
+    width: 120px;
+    height: auto;
+}
+
+.featured-products {
+    padding: 2em;
+    background-color: #fff;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-item {
+    text-align: center;
+    margin: 1em;
+}
