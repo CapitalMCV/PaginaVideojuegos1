@@ -19,7 +19,7 @@
 
 .category-item {
     text-align: center;
-    margin: 1em 15em;
+    margin: 1em 14em;
 }
 
 .category-item img {
@@ -34,11 +34,16 @@
 
 .product-list {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product-item {
-    text-align: center;
+    flex: 0 0 23%; /* Ajusta esto si necesitas más espacio entre los elementos */
     margin: 1em;
+    text-align: center;
+   
+    border: 1px solid #ddd;
+    padding: 1em;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
 }

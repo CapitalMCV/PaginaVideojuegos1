@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #232020;
+    color: #ffa500;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.user-icons img {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
+
+.admin-dashboard {
+    padding: 2em;
+}
+
+.admin-dashboard h2 {
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    background-color: #ddd;
+}
+
+.product-table th, .product-table td {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.product-table th {
+    background-color: #888;
+    color: white;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.admin-actions button {
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #888;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.admin-actions button:hover {
+    background-color: #555;
+}

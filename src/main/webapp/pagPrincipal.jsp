@@ -66,6 +66,54 @@
                     <p>Price: S/.XX.XX</p>
                     <button>Add al car</button>
                 </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 3</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 4</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 5</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 6</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 7</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 8</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 9</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
+                <div class="product-item">
+                    <img src="images/product2.png" alt="Producto 2">
+                    <p>Product 10</p>
+                    <p>Price: S/.XX.XX</p>
+                    <button>Add al car</button>
+                </div>
             </div>
         </section>
     </main>
