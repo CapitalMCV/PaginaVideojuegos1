@@ -1,0 +1,29 @@
+-- PROCEDIMIENTOS
+--  Añadir usuarios 
+use bdvideojuegos;
+DROP PROCEDURE  if exists spadiUsu ;
+DELIMITER //
+CREATE PROCEDURE spadiUsu
+(rol char(3), user varchar(50) , ape varchar(100) ,nom varchar(100),dni int, pass varchar(255))
+begin
+declare codu char(6);
+declare cuenta int;
+select right(max(idCliente),3)+1 into cuenta from usuarios;
+set codu=concat('USU',Lpad(cuenta,3,'0'));
+insert into usuarios values(codu, rol, user, ape, nom, dni, pass);
+end //
+DELIMITER ; 
+
+
+-- Modificar usuarios 
+DROP PROCEDURE  if exists spModiUsu ;
+CREATE PROCEDURE spModiUsu
+(codu char(6), rol char(3) , user varchar(50) , ape varchar(100) ,nom varchar(100),dni int, pass varchar(255))
+update usuarios set idRol=rol, apellidos=ape,nombres=nom, username=user, dni = dni, password = pass
+where idCliente=codu;
+
+-- Eliminar usuarios 
+DROP PROCEDURE  if exists spDelUsu ;
+
+CREATE PROCEDURE spDelUsu(codu char(6))
+delete from usuarios where idaCliente=codu;

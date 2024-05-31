@@ -62,32 +62,36 @@
                     <a class="nav-link text-right" href="">Admin</a>
                 </li> 
                 <li>
-                    <a class="nav-link" href="./control?opc=4">Log out</a>
+                    <a class="nav-link" href="">Log out</a>
                 </li> 
             </ul>
         </nav>
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-3 mt-5">
-                    <button class="btn-item">
-                        <div class="imagen-item">
-                            <img src="" alt="imagen de productos" style="height: 300px; width: 200px" class="img-item">
-                            <p style="margin-top: 15px; color: #000;">Productos</p>
-                        </div>
-                    </button>
+                    <a href="product.jsp">
+                        <button class="btn-item">
+                            <div class="imagen-item">
+                                <img src="" alt="imagen de productos" style="height: 300px; width: 200px" class="img-item">
+                                <p style="margin-top: 15px; color: #000;">Productos</p>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+                <div class="col-sm-3 mt-5">
+                    <a href="./controlCliente?opc=4">
+                        <button class="btn-item">
+                            <div class="imagen-item">
+                                <img src="" alt="imagen de usuarios" style="height: 300px; width: 200px" class="img-item">
+                                <p style="margin-top: 15px;color: #000;">Usuarios</p>
+                            </div>
+                        </button>
+                    </a>
                 </div>
                 <div class="col-sm-3 mt-5">
                     <button class="btn-item">
                         <div class="imagen-item">
-                            <img src="" alt="imagen de productos" style="height: 300px; width: 200px" class="img-item">
-                            <p style="margin-top: 15px;color: #000;">Usuarios</p>
-                        </div>
-                    </button>
-                </div>
-                <div class="col-sm-3 mt-5">
-                    <button class="btn-item">
-                        <div class="imagen-item">
-                            <img src="" alt="imagen de productos" style="height: 300px; width: 200px" class="img-item">
+                            <img src="" alt="imagen de reportes" style="height: 300px; width: 200px" class="img-item">
                             <p style="margin-top: 15px;color: #000;">Reportes</p>
                         </div>
                     </button>

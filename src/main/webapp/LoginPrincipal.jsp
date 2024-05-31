@@ -96,6 +96,7 @@
         </style>
     </head>
     <body>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-custom-purple">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
@@ -109,15 +110,16 @@
             <main>
                 <div class="row justify-content-center">
                     <div class="col-md-6 login-container">
-                        <form action="" method="post">
+                        <form action="usuarioDao" method="post">
                             <h3 class="text-center mb-4">Inicia sesión</h3>
+                            
                             <div class="group">
                                 <input required="true" class="form-control main-input" type="text" id="username">
                                 <label class="label-input" for="username">Username</label>
                             </div>
                             <div class="group">
-                                <input required="true" class="form-control main-input" type="password" id="nombres">
-                                <label class="label-input" for="nombres">Contraseña</label>
+                                <input required="true" class="form-control main-input" type="password" id="password">
+                                <label class="label-input" for="pass">Contraseña</label>
                             </div>
                             <button class="btn-login" name="submit">Login</button>
                             <p class="mt-3 text-center">¿No tienes una cuenta? <a href="registroCuenta.jsp" style="color: #f27324;">Crea una</a></p>

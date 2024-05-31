@@ -1,0 +1,123 @@
+DROP DATABASE IF EXISTS bdvideojuegos;
+CREATE DATABASE bdvideojuegos;
+USE bdvideojuegos;
+
+
+-- Crear tabla de roles
+CREATE TABLE roles(
+	idRol char(3) NOT NULL,
+    nombre_rol VARCHAR(100) UNIQUE NOT NULL,
+    primary key(idRol)
+);
+
+-- Crear tabla de Usuarios
+CREATE TABLE Usuarios (
+    idCliente char(6) NOT NULL,
+    idRol char(3) NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    nombres VARCHAR(100) not null,
+    apellidos VARCHAR(100) not null,
+    dni int not null,
+    password VARCHAR(255) NOT NULL,
+    primary key (idCliente),
+    FOREIGN KEY (idRol) REFERENCES roles(idRol)
+);
+
+-- Crear tabla de Categorias
+CREATE TABLE Categorias (
+    idCategoria char(5) NOT NULL,
+    nombre_cat VARCHAR(100) UNIQUE NOT NULL,
+    primary key(idCategoria)
+);
+
+-- Crear tabla de Productos
+CREATE TABLE Productos (
+    idProducto char(6) NOT NULL,
+    idCategoria char(5) NOT NULL ,
+    nombre_produc VARCHAR(255) NOT NULL,
+    stock INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    Imagen varchar(30) NOT NULL,
+    Primary key(idProducto),
+    FOREIGN KEY (idCategoria) REFERENCES Categorias(idCategoria)
+);
+
+-- Crear tabla de Ventas
+CREATE TABLE faccab (
+    NroFactura char(8) NOT NULL,
+    IdCliente char(6) NOT NULL,
+    FechaFactura datetime NOT NULL,
+    monto_total DECIMAL(10, 0) NOT NULL,
+    primary key(NroFactura),
+    FOREIGN KEY (IdCliente) REFERENCES Usuarios(IdCliente)
+);
+
+-- Crear tabla de DetalleVenta
+CREATE TABLE facdet (
+    NroFactura char(8) NOT NULL,
+    idProducto char(6) NOT NULL,
+    cantidad INT NOT NULL,
+    subtotal DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (NroFactura) REFERENCES faccab(NroFactura),
+    FOREIGN KEY (idProducto) REFERENCES Productos(idProducto),
+    PRIMARY KEY (NroFactura,idProducto)
+);
+
+
+-- Crear tabla de Pagos
+CREATE TABLE Pagos (
+    idPago char(8) NOT NULL,
+    NroFactura char(8) NOT NULL,
+    metodoPago VARCHAR(100) not null,
+    numeroTarjeta VARCHAR(100),
+    FOREIGN KEY (NroFactura) REFERENCES faccab(NroFactura),
+    primary key(idPago)
+);
+
+
+-- Insertar datos en la tabla de roles
+
+INSERT INTO roles VALUES('R01', 'Administrador'); 
+INSERT INTO roles VALUES('R02', 'Cliente'); 
+
+
+-- Insertar datos en la tabla de usuarios
+INSERT INTO Usuarios VALUES('US0001', 'R01', 'Admin', 'Administrador', 'Admin', '76543211', 'admin1');  
+INSERT INTO Usuarios VALUES('US0002', 'R02', 'glino', 'Gonzalo', 'Lino Kian', '76543211', '1234'); 
+INSERT INTO Usuarios VALUES('US0003', 'R02', 'mbuitron', 'Maria', 'Buitron Mendez', '76543211', '5678'); 
+INSERT INTO Usuarios VALUES('US0004', 'R02', 'lmunante', 'Luciana', 'Muñante Castro', '76543211', '8901');
+
+
+-- Insertar datos en la tabla de Categorias
+
+INSERT INTO categorias VALUES('CAT01', 'Juguetes'); 
+INSERT INTO categorias VALUES('CAT02', 'Consolas');
+INSERT INTO categorias VALUES('CAT03', 'Videojuegos') ;
+
+
+
+-- Insertar datos en la tabla de Productos
+INSERT INTO Productos VALUES('PRO01', 'CAT01', 'Hot Wheels - Pista de Carreras Extrema','24', '45.00','IMA001.jpg');  
+INSERT INTO Productos VALUES('PRO02', 'CAT01', 'Nerf Elite - Blaster Disruptor','24', '45.00','IMA002.jpg');  
+INSERT INTO Productos VALUES('PRO04', 'CAT02', 'PlayStation 5','30', '599.00','IMA003.jpg');  
+INSERT INTO Productos VALUES('PRO05', 'CAT02', 'Xbox Series X','8', '499.00','IMA004.jpg');  
+INSERT INTO Productos VALUES('PRO06', 'CAT03', 'The Legend of Zelda: Breath of the Wild', '16', '199.00', 'IMA005.jpg');  
+INSERT INTO Productos VALUES('PRO07', 'CAT03', 'FIFA 22', '20', '150.00', 'IMA006.jpg');  
+
+
+-- Insertar datos en la tabla de Venta
+INSERT INTO faccab VALUES('FAC00001', 'US0003', '2023-10-09 00:00:00', '90.00'); 
+INSERT INTO faccab VALUES('FAC00002', 'US0004', '2024-03-10 00:00:00', '649.00');  
+
+
+-- Insertar datos en la tabla de DetalleVenta
+INSERT INTO facdet VALUES('FAC00001', 'PRO01', '2', '90.00');  
+INSERT INTO facdet VALUES('FAC00002', 'PRO05', '1', '499.00'); 
+INSERT INTO facdet VALUES('FAC00002', 'PRO07', '1', '150.00'); 
+
+
+-- Insertar datos en la tabla de Pago
+INSERT INTO Pagos VALUES('PAG00001', 'FAC00001', 'Efectivo',NULL);  
+INSERT INTO Pagos VALUES('PAG00002', 'FAC00002', 'Tarjeta de debido', '4539 1707 5441 1840');  
+
+
