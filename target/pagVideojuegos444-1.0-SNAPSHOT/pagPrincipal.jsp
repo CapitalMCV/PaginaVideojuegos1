@@ -21,8 +21,8 @@
                 </ul>
             </nav>
             <div class="user-options">
-                <a href="#" class="login">Login</a>
-                <a href="#" class="cart">Carrito</a>
+                <a href="LoginPrincipal.jsp" class="login">Login</a>
+                <a href="Carrito.jsp" class="cart">Carrito</a>
             </div>
         </header>
 

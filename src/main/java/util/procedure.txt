@@ -27,3 +27,18 @@ DROP PROCEDURE  if exists spDelUsu ;
 
 CREATE PROCEDURE spDelUsu(codu char(6))
 delete from usuarios where idaCliente=codu;
+
+
+-- Para añadir un usuario como cliente
+DROP PROCEDURE  if exists spadiUsuCliente;
+DELIMITER //
+CREATE PROCEDURE spadiUsuCliente
+(rol char(3), user varchar(50) , ape varchar(100) ,nom varchar(100),dni int, pass varchar(255))
+begin
+declare codu char(6);
+declare cuenta int;
+select right(max(idCliente),3)+1 into cuenta from usuarios;
+set codu=concat('USU',Lpad(cuenta,3,'0'));
+insert into usuarios values(codu, rol, user, ape, nom, dni, pass);
+end //
+DELIMITER ; 

@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="beans.*, java.util.*, dao.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,7 +32,7 @@
                 width: 100%;
                 height: auto;
                 opacity: 0.9;
-               
+
             }
 
             .container-1 {
@@ -82,7 +84,7 @@
                 background-color: rgba(255, 255, 255, 0.9);
                 padding: 30px;
                 border-radius: 10px;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); 
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
             }
 
         </style>
@@ -102,32 +104,32 @@
             <main>
                 <div class="row justify-content-center">
                     <div class="col-md-6 registro-container">
-                        <form action="" method="post" class="registro">
-                            <h3 class="text-center mb-4">Regístrate</h3>
+                        <form action="controlCliente?opc=2" method="post">
+                            <h3 class="text-center mb-4">RegÃ­strateee</h3>
                             <div class="row">
                                 <div class="col">
                                     <div class="group">
-                                        <input required="true" class="form-control main-input" type="text" id="username">
-                                        <label class="label-input" for="username">Nombre de usuario</label>
+                                        <input required="true" class="form-control main-input" type="text" name="user">
+                                        <label class="label-input" for="user">Nombre de usuario</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="group">
-                                        <input required="true" class="form-control main-input" type="text" id="nombres">
-                                        <label class="label-input" for="nombres">Nombres</label>
+                                        <input required="true" class="form-control main-input" type="text" name="nom">
+                                        <label class="label-input" for="nom">Nombres</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="group">
-                                        <input required="true" class="form-control main-input" type="text" id="apellidos">
-                                        <label class="label-input" for="apellidos">Apellidos</label>
+                                        <input required="true" class="form-control main-input" type="text" name="ape">
+                                        <label class="label-input" for="ape">Apellidos</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="group">
-                                        <input required="true" class="form-control main-input" type="text" id="dni">
+                                        <input required="true" class="form-control main-input" type="text" name="dni">
                                         <label class="label-input" for="dni">Dni</label>
                                     </div>
                                 </div>
@@ -135,15 +137,16 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="group">
-                                        <input required="true" class="form-control main-input" type="password" id="password">
-                                        <label class="label-input" for="password">Contraseña</label>
+                                        <input required="true" class="form-control main-input" type="password" name="pass">
+                                        <label class="label-input" for="pass">ContraseÃ±a</label>
                                     </div>
+                                    
                                 </div>
                             </div>
-                            <button class="btn-registro">
+                            <button class="btn-registro" name="submit">
                                 Registrarse
                             </button>
-                            <p class="mt-3 text-center">¿Ya tienes una cuenta? <a href="LoginPrincipal.jsp" style="color: #f27324;">Inicia sesión</a></p>
+                            <p class="mt-3 text-center">Â¿Ya tienes una cuenta? <a href="LoginPrincipal.jsp" style="color: #f27324;">Inicia sesiÃ³n</a></p>
                         </form>
                     </div>
                 </div>

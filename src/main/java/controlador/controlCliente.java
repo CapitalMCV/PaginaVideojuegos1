@@ -13,34 +13,34 @@ import beans.*;
 public class controlCliente extends HttpServlet {
 
     usuarioDao obj = new usuarioDao();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int op = Integer.parseInt(request.getParameter("opc"));
         if (op == 1) {
-            
+            autenticar(request, response);
         }
         if (op == 2) {
-            
-        } 
+            registrar(request, response);
+        }
         if (op == 3) {
-            
-        } 
+
+        }
         if (op == 4) {
             getUsu(request, response);
-        } 
+        }
         if (op == 5) {
             adiAlu(request, response);
-        } 
+        }
         if (op == 6) {
             ediUsu(request, response);
         }
         if (op == 7) {
             ediUsu(request, response);
         }
-        
+
     }
-    
+
     //listado total
     protected void getUsu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,6 +52,7 @@ public class controlCliente extends HttpServlet {
         String pag = "/pagUsuarioCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
+
     //grabar
     protected void adiAlu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,8 +75,7 @@ public class controlCliente extends HttpServlet {
         request.getRequestDispatcher(pag).forward(request, response);
 
     }
-    
-    
+
     //editar alumno
     protected void ediUsu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -88,7 +88,7 @@ public class controlCliente extends HttpServlet {
         String pag = "/pagUsuarioCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
-    
+
     //eliminar alumno
     protected void eliUsu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -101,9 +101,45 @@ public class controlCliente extends HttpServlet {
         String pag = "/pagUsuarioCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
-    
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    protected void autenticar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        usuarioDao usuarioDao = new usuarioDao();
+
+        if (usuarioDao.autenticar(username, password)) {
+            String rol = usuarioDao.obtenerRol(username);
+
+            if (rol.equals("R01")) {
+                response.sendRedirect("perfilAdmin.jsp");
+            } else if (rol.equals("R02")) {
+                response.sendRedirect("pagPrincipal.jsp");
+            }
+        } else {
+            response.sendRedirect("LoginPrincipal.jsp?error=true");
+        }
+    }
+
+    protected void registrar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        usuario a = new usuario();
+
+        a.setUsername(request.getParameter("user"));
+        a.setApellidos(request.getParameter("ape"));
+        a.setNombres(request.getParameter("nom"));
+        a.setDni(Integer.parseInt(request.getParameter("dni")));
+        a.setPassword(request.getParameter("pass"));
+
+        obj.registrar(a);
+
+        String pag = "/registroCuenta.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+
+    }
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

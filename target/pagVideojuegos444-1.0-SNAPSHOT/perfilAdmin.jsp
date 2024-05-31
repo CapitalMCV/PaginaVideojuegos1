@@ -9,7 +9,7 @@
 
         <style>
 
-            
+
             .container {
                 text-align: center;
                 position: relative;
@@ -46,32 +46,36 @@
     </head>
     <body>
         <%@include file="header.jsp" %>
-            <div class="container-fluid mt-lg-5" >
-                <div class="text-center">
-                    <h1 style="color: #1a1a1a">¿Con qué perfil desea ingresar?</h1>
-                </div>
-                <div>
-                    <div class="row text-center">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-2 mt-5">
+        <div class="container-fluid mt-lg-5" >
+            <div class="text-center">
+                <h1 style="color: #1a1a1a">¿Con qué perfil desea ingresar?</h1>
+            </div>
+            <div>
+                <div class="row text-center">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-2 mt-5">
+                        <a href="VistaPrincipalAdmin.jsp">
                             <button class="btn-rol">
                                 <div class="imagen-rol">
                                     <img src="images/fondo_perfil1.jpg" style="height: 150px; width: 150px" class="img-rol">
                                     <p style="margin-top: 15px;">Administrador</p>
                                 </div>
                             </button>
-                        </div>
-                        <div class="col-sm-2 mt-5" style="margin-left: 20px;">
+                        </a>
+                    </div>
+                    <div class="col-sm-2 mt-5" style="margin-left: 20px;">
+                        <a href="pagPrincipal.jsp">
                             <button class="btn-rol">
                                 <div class="imagen-rol">
                                     <img src="images/fondo_perfil1.jpg" style="height: 150px; width: 150px" class="img-rol">
                                     <p style="margin-top: 15px;">Cliente</p>
                                 </div>
                             </button>
-                        </div>
-                        <div class="col-sm-4"></div>
+                        </a>
                     </div>
+                    <div class="col-sm-4"></div>
                 </div>
-            </div>      
+            </div>
+        </div>      
     </body>
 </html>

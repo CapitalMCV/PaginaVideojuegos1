@@ -119,5 +119,97 @@ public class usuarioDao {
         }
     }
 
-    
+    public boolean autenticar(String username, String password) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean autenticado = false;
+
+        try {
+            con = MySQLConexion.getConexion();
+            String query = "SELECT * FROM Usuarios WHERE username = ? AND password = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+
+            autenticado = rs.next(); // Si rs.next() es verdadero, significa que hay al menos una fila coincidente, es decir, credenciales válidas.
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        return autenticado;
+    }
+
+    public String obtenerRol(String username) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String rol = null;
+
+        try {
+            con = MySQLConexion.getConexion();
+            String query = "SELECT idRol FROM Usuarios WHERE username = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                rol = rs.getString("idRol");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar recursos
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        return rol;
+    }
+
+    //GRABAR nuevo usuario rol cliente
+    public void registrar(usuario a) {
+        Connection cn = MySQLConexion.getConexion();
+        try {
+            String sql = "{call spadiUsuCliente(?,?,?,?,?,?)}";
+            CallableStatement st = cn.prepareCall(sql);
+            st.setString(1, "R02"); 
+            st.setString(2, a.getUsername());
+            st.setString(3, a.getApellidos());
+            st.setString(4, a.getNombres());
+            st.setInt(5, a.getDni());
+            st.setString(6, a.getPassword());
+            st.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

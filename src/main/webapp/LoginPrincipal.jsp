@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="beans.*, java.util.*, dao.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -98,38 +99,39 @@
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-custom-purple">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fas fa-home"></i> Virtual Game<span class="sr-only">(current)</span></a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <div class="container">
-            <main>
-                <div class="row justify-content-center">
-                    <div class="col-md-6 login-container">
-                        <form action="usuarioDao" method="post">
-                            <h3 class="text-center mb-4">Inicia sesión</h3>
-                            
-                            <div class="group">
-                                <input required="true" class="form-control main-input" type="text" id="username">
-                                <label class="label-input" for="username">Username</label>
-                            </div>
-                            <div class="group">
-                                <input required="true" class="form-control main-input" type="password" id="password">
-                                <label class="label-input" for="pass">Contraseña</label>
-                            </div>
-                            <button class="btn-login" name="submit">Login</button>
-                            <p class="mt-3 text-center">¿No tienes una cuenta? <a href="registroCuenta.jsp" style="color: #f27324;">Crea una</a></p>
-                        </form>
-                    </div>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-home"></i> Virtual Game<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </nav>
+<%
+            List<usuario> lista = (ArrayList<usuario>) request.getAttribute("dato");
+        %> 
+    <div class="container">
+        <main>
+            <div class="row justify-content-center">
+                <div class="col-md-6 login-container">
+                    <form action="controlCliente?opc=1" method="post">
+                        <h3 class="text-center mb-4">Inicia sesión</h3>
+                        
+                        <div class="group">
+                            <input required="true" class="form-control main-input" type="text" id="username" name="username">
+                            <label class="label-input" for="username">Username</label>
+                        </div>
+                        <div class="group">
+                            <input required="true" class="form-control main-input" type="password" id="password" name="password">
+                            <label class="label-input" for="password">Contraseña</label>
+                        </div>
+                        <button class="btn-login" name="submit">Login</button>
+                        <p class="mt-3 text-center">¿No tienes una cuenta? <a href="registroCuenta.jsp" style="color: #f27324;">Crea una</a></p>
+                    </form>
                 </div>
-            </main>
-        </div>
-        <div class="background">
-            <img src="images/p3.jpg" alt="">
-        </div>
+            </div>
+        </main>
+    </div>
+    <div class="background">
+        <img src="images/p3.jpg" alt="">
+    </div>
     </body>
 </html>
