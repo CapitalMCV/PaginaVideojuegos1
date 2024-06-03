@@ -18,7 +18,7 @@ public class usuarioDao {
         Connection cn = MySQLConexion.getConexion();
 
         try {
-            String sql = "select idCliente, idRol, username, apellidos, nombres, dni, password from Usuarios";
+            String sql = "select idCliente, idRol, username, apellidos, nombres, dni, password from usuarios";
 
             PreparedStatement st = cn.prepareStatement(sql);
             // st.setString(1, id);
@@ -45,7 +45,7 @@ public class usuarioDao {
         usuario u = null;
         Connection cn = MySQLConexion.getConexion();
         try {
-            String sql = "select idCliente, idRol, username, apellidos, nombres, dni, password "
+            String sql = "select idCliente, idRol, username, nombres, apellidos, dni, password"
                     + " from usuarios where idCliente=?";
             PreparedStatement st = cn.prepareStatement(sql);
             st.setString(1, cod);
@@ -55,8 +55,8 @@ public class usuarioDao {
                 u.setCodu(rs.getString(1));
                 u.setRol(rs.getString(2));
                 u.setUsername(rs.getString(3));
-                u.setApellidos(rs.getString(4));
-                u.setNombres(rs.getString(5));
+                u.setNombres(rs.getString(4));
+                u.setApellidos(rs.getString(5));
                 u.setDni(rs.getInt(6));
                 u.setPassword(rs.getString(7));
             }
@@ -94,8 +94,8 @@ public class usuarioDao {
             st.setString(1, a.getCodu());
             st.setString(2, a.getRol());
             st.setString(3, a.getUsername());
-            st.setString(4, a.getApellidos());
-            st.setString(5, a.getNombres());
+            st.setString(4, a.getNombres());
+            st.setString(5, a.getApellidos());
             st.setInt(6, a.getDni());
             st.setString(7, a.getPassword());
             st.executeUpdate();

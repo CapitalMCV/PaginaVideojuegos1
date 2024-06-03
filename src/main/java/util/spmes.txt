@@ -1,0 +1,6 @@
+create procedure spmes(an int)
+select month(FechaFactura) mes , sum(precio*cantidad) total
+from fac_cabe f inner join fac_deta d on f.NroFactura=d.NroFactura
+inner join articulos a on a.idProducto=d.idProducto
+where year(FechaFactura)=an
+GROUP by month(FechaFactura)

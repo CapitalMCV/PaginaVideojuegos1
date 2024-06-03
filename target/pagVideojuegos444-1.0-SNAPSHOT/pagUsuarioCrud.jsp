@@ -35,12 +35,12 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header">
-                            ${titulo}
+                            ${titulo}<!-- se obtiene el valor enviador por el met. getUsu de controlcliente -->
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"><!-- enviamos al servlet la variable nro de valor 5 -->
                             <form action="controlCliente?opc=${nro}" method="post">
                                 <div class="form-group">
-                                    <input type="hidden" name="codu" value="${usu.getCodu()}">
+                                    <input type="hidden" name="codu" value="${usu.getCodu()}"><!-- obtenemos el codigo de usuario -->
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
@@ -67,7 +67,8 @@
                                     <input type="text" class="form-control" name="pass" value="${usu.getPassword()}" >
                                 </div>
                                 <button class="btn btn-success" name="envia">
-                                    <i class="far fa-save"></i>
+                                    <i  class="far fa-save"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -75,7 +76,7 @@
                 </div>
 
                 <div class="col-sm-8">
-                    <h2 class="text-blue">Lista de Alumno</h2>
+                    <h2 class="text-blue">Lista de Usuarios</h2>
                     <table class="table table-hover" id="tablax">
                         <thead>
                             <tr class="text-white bg-black">
@@ -89,10 +90,10 @@
 
                         %>
                         
-                        <td><a href="controlCliente?opc=6&cod=<%=x.getCodu()%>" class="btn btn-success">
+                        <td><a href="controlCliente?opc=6&cod=<%=x.getCodu()%>" class="btn btn-success"><!-- editar -->
                                 <i class="far fa-edit"></i>    
                             </a>
-                            <a href="controlCliente?opc=7&cod=<%=x.getCodu()%>" class="btn btn-danger">
+                            <a href="controlCliente?opc=7&cod=<%=x.getCodu()%>" class="btn btn-danger"><!-- eliminar -->
                                 <i class="fas fa-trash-alt"></i>    
                             </a>
 

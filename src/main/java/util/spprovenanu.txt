@@ -1,0 +1,17 @@
+use bdvideojuegos;
+create procedure spprovenanu()
+SELECT 
+        YEAR(fc.FechaFactura) AS anio,
+        p.idProducto,
+        p.nombre_produc as nombre_producto,
+        SUM(fd.cantidad) AS cantidad_vendida
+    FROM 
+        faccab fc
+    INNER JOIN 
+        facdet fd ON fc.NroFactura = fd.NroFactura
+    INNER JOIN 
+        productos p ON fd.idProducto = p.idProducto
+    GROUP BY 
+        anio, p.idProducto, p.nombre_produc
+    ORDER BY 
+        anio, cantidad_vendida DESC;

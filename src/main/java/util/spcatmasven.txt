@@ -1,0 +1,20 @@
+CREATE PROCEDURE spcatmasven(an INT)
+BEGIN
+    SELECT 
+        p.idCategoria,
+        c.nombre_cat,
+        SUM(fd.subtotal) AS ventas_totales
+    FROM 
+        faccab fc
+    INNER JOIN 
+        facdet fd ON fc.NroFactura = fd.NroFactura
+    INNER JOIN 
+        productos p ON fd.idProducto = p.idProducto
+    INNER JOIN
+        categorias c ON p.idCategoria = c.idCategoria
+    WHERE 
+        YEAR(fc.FechaFactura) = an
+    GROUP BY 
+        p.idCategoria, c.nombre_cat
+    ORDER BY 
+        ventas_totales DESC;

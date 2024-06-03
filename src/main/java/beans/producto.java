@@ -4,37 +4,60 @@
  */
 package beans;
 
+/**
+ *
+ * @author Patrick
+ */
 public class producto {
-    
-    private String codProd;
-    private String codCat;
-    private String nomProd;
+    private String idproducto;
+    private String idCategoria;
+    private String nompro;
     private int stock;
     private double precio;
-    private String imagen;
+    private String img;
 
-    public String getCodProd() {
-        return codProd;
+    public producto() {
     }
 
-    public void setCodProd(String codProd) {
-        this.codProd = codProd;
+    public producto(String idproducto, String idCategoria, String nompro, int stock, double precio, String img) {
+        this.idproducto = idproducto;
+        this.idCategoria = idCategoria;
+        this.nompro = nompro;
+        this.stock = stock;
+        this.precio = precio;
+        this.img = img;
     }
 
-    public String getCodCat() {
-        return codCat;
+    public String getImg() {
+        return img;
     }
 
-    public void setCodCat(String codCat) {
-        this.codCat = codCat;
+    public void setImg(String img) {
+        this.img = img;
     }
 
-    public String getNomProd() {
-        return nomProd;
+    public String getIdproducto() {
+        return idproducto;
     }
 
-    public void setNomProd(String nomProd) {
-        this.nomProd = nomProd;
+    public void setIdproducto(String idproducto) {
+        this.idproducto = idproducto;
+    }
+
+    public String getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(String idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getNompro() {
+        return nompro;
+    }
+
+    public void setNompro(String nompro) {
+        this.nompro = nompro;
     }
 
     public int getStock() {
@@ -51,14 +74,6 @@ public class producto {
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
     }
     
     

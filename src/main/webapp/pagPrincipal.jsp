@@ -15,9 +15,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">VIDEOGAMES</a></li>
-                    <li><a href="#">TOYS</a></li>
-                    <li><a href="#">CONSOLES</a></li>
+                    <li><a href="servlet?opc=3&idcat=CAT03">VIDEOGAMES</a></li>
+                    <li><a href="servlet?opc=1&idcat=CAT01">TOYS</a></li>
+                    <li><a href="servlet?opc=2&idcat=CAT02">CONSOLES</a></li>
                 </ul>
             </nav>
             <div class="user-options">
@@ -37,16 +37,22 @@
                 <h2>Our categories</h2>
                 <div class="category-list">
                     <div class="category-item">
+                        <a href="servlet?opc=3&idcat=CAT03">
                         <img src="images/games.jpg" alt="Juegos">
-                        <p>Games</p>
+                        <p>Videojuegos</p>
+                        </a>
                     </div>
                     <div class="category-item">
+                        <a href="servlet?opc=1&idcat=CAT01">
                         <img src="images/toys.jpg" alt="Juguetes">
-                        <p>Toys</p>
+                        <p>Juguetes</p>
+                        </a>
                     </div>
                     <div class="category-item">
+                        <a href="servlet?opc=2&idcat=CAT02">
                         <img src="images/consola-ps5.jpg" alt="Consolas">
-                        <p>Consoles</p>
+                        <p>Consolas</p>
+                        </a>
                     </div>
                 </div>
             </section>

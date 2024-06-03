@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="CSS/header.css" rel="stylesheet" type="text/css"/>
@@ -69,7 +70,7 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-3 mt-5">
-                    <a href="product.jsp">
+                    <a href="./controlProducto?opc=4">
                         <button class="btn-item">
                             <div class="imagen-item">
                                 <img src="" alt="imagen de productos" style="height: 300px; width: 200px" class="img-item">

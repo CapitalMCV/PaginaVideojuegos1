@@ -42,3 +42,28 @@ set codu=concat('USU',Lpad(cuenta,3,'0'));
 insert into usuarios values(codu, rol, user, ape, nom, dni, pass);
 end //
 DELIMITER ; 
+
+
+-- spproductos
+create procedure spproductos(cat char(5))
+SELECT
+        p.nombre_produc,
+        p.idCategoria,
+        p.idProducto,
+        p.Imagen,
+        c.nombre_cat,
+        p.precio,
+        p.stock
+    FROM 
+        Productos p
+    INNER JOIN 
+        Categorias c ON p.idCategoria = c.idCategoria WHERE p.idCategoria=cat
+
+
+--spmes
+create procedure spmes(an int)
+select month(FechaFactura) mes , sum(precio*cantidad) total
+from fac_cabe f inner join fac_deta d on f.NroFactura=d.NroFactura
+inner join articulos a on a.idProducto=d.idProducto
+where year(FechaFactura)=an
+GROUP by month(FechaFactura)
