@@ -12,6 +12,14 @@
         <servlet-name>controlCliente</servlet-name>
         <servlet-class>controlador.controlCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controlProducto</servlet-name>
+        <servlet-class>controlador.controlProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>servlet</servlet-name>
+        <servlet-class>controlador.servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>adminProducto</servlet-name>
         <url-pattern>/adminProducto</url-pattern>
@@ -24,9 +32,18 @@
         <servlet-name>controlCliente</servlet-name>
         <url-pattern>/controlCliente</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlProducto</servlet-name>
+        <url-pattern>/controlProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servlet</servlet-name>
+        <url-pattern>/servlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
 </web-app>
+

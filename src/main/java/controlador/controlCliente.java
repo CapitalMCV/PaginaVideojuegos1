@@ -83,12 +83,12 @@ public class controlCliente extends HttpServlet {
         request.getRequestDispatcher(pag).forward(request, response);
 
     }
-    
+
     //grabar o actualizar
     protected void añadirusuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         usuario a = new usuario();
-        
+
         a.setUsername(request.getParameter("user"));
         a.setApellidos(request.getParameter("ape"));
         a.setNombres(request.getParameter("nombre"));
@@ -96,8 +96,8 @@ public class controlCliente extends HttpServlet {
         a.setRol(request.getParameter("rol"));
         a.setPassword(request.getParameter("pass"));
 
-            obj.adiUsuAdmin(a);
-        
+        obj.adiUsuAdmin(a);
+
         request.setAttribute("dato", obj.getUsuAdmin());
         request.setAttribute("titulo", "Adicion de usuarios");
         request.setAttribute("nro", 3);//para grabar

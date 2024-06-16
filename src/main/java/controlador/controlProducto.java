@@ -17,27 +17,20 @@ public class controlProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int op = Integer.parseInt(request.getParameter("opc"));
-        switch (op) {
-            case 1:
-                autenticar(request, response);
-                break;
-            case 2:
-                registrar(request, response);
-                break;
-            case 4:
-                getProd(request, response);
-                break;
-            case 5:
-                adiProd(request, response);
-                break;
-            case 6:
-                ediUsu(request, response);
-                break;
-            case 7:
-                ediUsu(request, response);
-                break;
-            default:
-                throw new ServletException("Invalid operation code");
+        if (op == 3) {
+            añadirproducto(request, response);
+        }
+        if (op == 4) {
+            getProd(request, response);
+        }
+        if (op == 5) {
+            adiProd(request, response);
+        }
+        if (op == 6) {
+            ediProd(request, response);
+        }
+        if (op == 7) {
+            eliProd(request, response);
         }
     }
 
@@ -47,7 +40,7 @@ public class controlProducto extends HttpServlet {
 
         request.setAttribute("dato", obj.getProd());
         request.setAttribute("titulo", "Adicion de productos");
-        request.setAttribute("nro", 5);//para grabar
+        request.setAttribute("nro", 3);//para grabar
         request.setAttribute("prod", new producto());
         String pag = "/pagProductoCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
@@ -60,7 +53,7 @@ public class controlProducto extends HttpServlet {
         int sw = 0;
         if (request.getParameter("codu") != null) {
             sw = 1;
-            b.setIdproducto(request.getParameter("idproducto"));
+            b.setIdproducto(request.getParameter("codu"));
         }
         
         b.setIdCategoria(request.getParameter("codcat"));
@@ -81,68 +74,54 @@ public class controlProducto extends HttpServlet {
         String pag = "/pagProductoCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
-
-    //editar alumno
-    protected void ediUsu(HttpServletRequest request, HttpServletResponse response)
+    
+    //grabar o actualizar
+    protected void añadirproducto(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cod = request.getParameter("cod");
+        producto b = new producto();
+        
+        b.setIdCategoria(request.getParameter("codcat"));
+        b.setNompro(request.getParameter("nompro"));
+        b.setStock(Integer.parseInt(request.getParameter("stock")));
+        b.setPrecio(Double.parseDouble(request.getParameter("precio")));
+        b.setImg(request.getParameter("img"));
 
+            obj.adiProd(b);
+        
         request.setAttribute("dato", obj.getProd());
-        request.setAttribute("titulo", "Actualizar datos");
-        request.setAttribute("nro", 6);//para grabar
-        request.setAttribute("usu", obj.busProducto(cod));
-        String pag = "/pagUsuarioCrud.jsp";
+        request.setAttribute("titulo", "Adicion de usuarios");
+        request.setAttribute("nro", 3);//para grabar
+        request.setAttribute("prod", new producto());
+        String pag = "/pagProductoCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
+
     }
 
-    //eliminar alumno
-    protected void eliUsu(HttpServletRequest request, HttpServletResponse response)
+    //editar alumno
+    protected void ediProd(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String cod = request.getParameter("cod");
 
         request.setAttribute("dato", obj.getProd());
         request.setAttribute("titulo", "Actualizar datos");
         request.setAttribute("nro", 5);//para grabar
-        request.setAttribute("usu", obj.busProducto(cod));
-        String pag = "/pagUsuarioCrud.jsp";
+        request.setAttribute("prod", obj.busProducto(cod));
+        String pag = "/pagProductoCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
 
-    protected void autenticar(HttpServletRequest request, HttpServletResponse response)
+    //eliminar alumno
+    protected void eliProd(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        productoDao usuarioDao = new productoDao();
-
-        if (usuarioDao.autenticar(username, password)) {
-            String rol = usuarioDao.obtenerRol(username);
-
-            if (rol.equals("R01")) {
-                response.sendRedirect("perfilAdmin.jsp");
-            } else if (rol.equals("R02")) {
-                response.sendRedirect("pagPrincipal.jsp");
-            }
-        } else {
-            response.sendRedirect("LoginPrincipal.jsp?error=true");
-        }
-    }
-
-    protected void registrar(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        usuario a = new usuario();
-
-        a.setUsername(request.getParameter("user"));
-        a.setApellidos(request.getParameter("ape"));
-        a.setNombres(request.getParameter("nom"));
-        a.setDni(Integer.parseInt(request.getParameter("dni")));
-        a.setPassword(request.getParameter("pass"));
-
-        obj.registrar(a);
-
-        String pag = "/registroCuenta.jsp";
+        String cod = request.getParameter("cod");
+        
+        obj.delProd(cod);
+        request.setAttribute("dato", obj.getProd());
+        request.setAttribute("titulo", "Borrar datos");
+        request.setAttribute("nro", 5);//para grabar
+        request.setAttribute("prod", obj.busProducto(cod));
+        String pag = "/pagProductoCrud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
-
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
