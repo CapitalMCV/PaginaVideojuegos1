@@ -98,40 +98,38 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-custom-purple">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fas fa-home"></i> Virtual Game<span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </nav>
-<%
-            List<usuario> lista = (ArrayList<usuario>) request.getAttribute("dato");
-        %> 
-    <div class="container">
-        <main>
-            <div class="row justify-content-center">
-                <div class="col-md-6 login-container">
-                    <form action="controlCliente?opc=1" method="post">
-                        <h3 class="text-center mb-4">Inicia sesión</h3>
-                        
-                        <div class="group">
-                            <input required="true" class="form-control main-input" type="text" id="username" name="username">
-                            <label class="label-input" for="username">Username</label>
-                        </div>
-                        <div class="group">
-                            <input required="true" class="form-control main-input" type="password" id="password" name="password">
-                            <label class="label-input" for="password">Contraseña</label>
-                        </div>
-                        <button class="btn-login" name="submit">Login</button>
-                        <p class="mt-3 text-center">¿No tienes una cuenta? <a href="registroCuenta.jsp" style="color: #f27324;">Crea una</a></p>
-                    </form>
+        <%@include file="headerSecundario.jsp" %>
+        <%
+            String men = "";
+            if (request.getAttribute("mensaje") != null) {
+                men = (String) request.getAttribute("mensaje");
+            }
+            %> 
+        <div class="container">
+            <main>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 mt-5 login-container">
+                        <form action="controlCliente?opc=1" method="post">
+                            <h3 class="text-center mb-4">Inicia sesión</h3>
+
+                            <div class="group">
+                                <input required="true" class="form-control main-input" type="text" id="username" name="username">
+                                <label class="label-input" for="username">Username</label>
+                            </div>
+                            <div class="group">
+                                <input required="true" class="form-control main-input" type="password" id="password" name="password">
+                                <label class="label-input" for="password">Contraseña</label>
+                            </div>
+                            <button class="btn-login" name="submit">Login</button>
+                            <p class="text-danger"><%=men%></p>
+                            <p class="mt-3 text-center">¿No tienes una cuenta? <a href="registroCuenta.jsp" style="color: #f27324;">Crea una</a></p>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </main>
-    </div>
-    <div class="background">
-        <img src="images/p3.jpg" alt="">
-    </div>
+            </main>
+        </div>
+        <div class="background">
+            <img src="images/p3.jpg" alt="">
+        </div>
     </body>
 </html>

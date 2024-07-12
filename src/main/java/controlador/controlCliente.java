@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 public class controlCliente extends HttpServlet {
 
@@ -37,6 +41,12 @@ public class controlCliente extends HttpServlet {
         }
         if (op == 7) {
             eliUsu(request, response);
+        }
+        if (op == 8) {
+            cerrarSesion(request, response);
+        }
+        if (op == 9) {
+            graba(request, response);
         }
 
     }
@@ -139,19 +149,46 @@ public class controlCliente extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        usuarioDao usuarioDao = new usuarioDao();
+        System.out.println("Username: " + username);
+        System.out.println("Password: " + password);
 
-        if (usuarioDao.autenticar(username, password)) {
-            String rol = usuarioDao.obtenerRol(username);
+        usuario u = obj.autenticar(username.trim(), password.trim());
+        HttpSession ses = request.getSession();
+        String pag = "";
 
-            if (rol.equals("R01")) {
-                response.sendRedirect("perfilAdmin.jsp");
-            } else if (rol.equals("R02")) {
-                response.sendRedirect("pagPrincipal.jsp");
-            }
+        if (u == null) {
+            request.setAttribute("mensaje", "usuario o contraseña incorrectos");
+            pag = "/LoginPrincipal.jsp";
         } else {
-            response.sendRedirect("LoginPrincipal.jsp?error=true");
+            ses.setAttribute("usuario", u);
+            ses.setAttribute("username", u.getNombres() + " " + u.getApellidos());
+            String rol = obj.obtenerRol(username);
+            System.out.println("Rol: " + rol);
+            if (rol != null) {
+                if (rol.equals("R01")) {
+                    pag = "/perfilAdmin.jsp";
+                } else {
+                    pag = "/pagPrincipal.jsp";
+                }
+            } else {
+                ses.setAttribute("usuario", u);
+                request.setAttribute("mensaje", "Rol no encontrado");
+                pag = "/LoginPrincipal.jsp";
+            }
         }
+
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+
+    protected void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        String pag = "/LoginPrincipal.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+
     }
 
     protected void registrar(HttpServletRequest request, HttpServletResponse response)
@@ -171,7 +208,24 @@ public class controlCliente extends HttpServlet {
 
     }
 
+    protected void graba(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession ses = request.getSession();//crear una sesion
+        List<Compra> lista = (ArrayList<Compra>) ses.getAttribute("canasta");
+        usuario u = (usuario) ses.getAttribute("usuario");
+        double total = (double) ses.getAttribute("total");
+        //graba la factura y el detalle
+        String fac = obj.grabaFactura(lista, u.getCodu());
+        String cad = "Factura Nro :" + fac;
+        cad += "\n Cliente " + u.getApellidos() + "," + u.getNombres();
+        cad += "\n Total Compra " + total;
+        ses.setAttribute("canasta", null);
+        ses.setAttribute("usuario", null);
+        response.sendRedirect("generaQr?texto=" + cad);
+
+    }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
+import beans.Compra;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +11,9 @@ import beans.Productos;
 import beans.VentaAnual;
 import beans.VentaCat;
 import beans.Ventas;
+import beans.producto;
 import util.MySQLConexion;
 
-/**
- *
- * @author Patrick
- */
 public class Negocio {
     
     public List<Productos> lispro(String idcat){
@@ -129,4 +123,25 @@ public class Negocio {
         return lista;
     }
     
+    public Productos busProducto(String id) {
+    Productos p=null;
+    Connection cn=MySQLConexion.getConexion();
+      try{
+          String sql="select Idproducto, nombre_produc, stock, precio, imagen FROM productos WHERE idproducto=?";
+          PreparedStatement st=cn.prepareStatement(sql);
+          st.setString(1, id);
+          ResultSet rs=st.executeQuery();
+          if(rs.next()){
+              p=new Productos();
+              p.setIdproducto(rs.getString(1));
+              p.setNompro(rs.getString(2));
+              p.setStock(rs.getInt(3));
+              p.setPrecio(rs.getDouble(4));
+           }
+      }catch(Exception ex){
+          ex.printStackTrace();
+      }
+      return p; 
+
+    }
 }

@@ -4,6 +4,7 @@ C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\m
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\dao\productoDao.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\controlador\controlProducto.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\beans\VentaCat.java
+C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\controlador\generaQr.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\controlador\servlet.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\util\MySQLConexion.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\dao\usuarioDao.java
@@ -12,6 +13,7 @@ C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\m
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\beans\producto.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\beans\Productos.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\beans\VentaAnual.java
+C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\beans\Compra.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\interfaces\Itienda.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\controlador\controlCliente.java
 C:\Users\jessi\Documents\NetBeansProjects\pagVidejuegos\PaginaVideojuegos1\src\main\java\util\SQLConexion.java

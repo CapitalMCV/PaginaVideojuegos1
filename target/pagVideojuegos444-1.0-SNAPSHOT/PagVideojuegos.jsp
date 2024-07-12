@@ -24,41 +24,10 @@
         <%
             List<Productos> lista = (ArrayList<Productos>) request.getAttribute("provid");
         %>
-        <nav class="navbar navbar-expand-lg bg-dark">
-            <div class="container-fluid">
-
-                <a class="navbar-brand" href="#" id="cabecera-titulo">VIRTUAL GAME</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" aria-current="page" href="#" id="cabecera">CONSOLA</a>
-                        <a class="nav-link" href="#" id="cabecera">JUGUETES</a>
-                        <a class="nav-link" href="#" id="cabecera">VIDEOJUEGOS</a>
-                    </div>
-                </div>
-
-                <div class="d-flex" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" aria-current="page" href="#">
-                            <img src="Img/logo-sin-foto.png" alt="Bootstrap" width="30" height="24">
-                        </a>
-                        <a class="nav-link" href="#">
-                            <img src="Img/logo-sin-foto.png" alt="Bootstrap" width="30" height="24">
-                        </a>
-                        <a class="nav-link" href="#">
-                            <img src="Img/logo-sin-foto.png" alt="Bootstrap" width="30" height="24">
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </nav>
+        <%@include file="header.jsp" %>
 
         <div class="container my-4">
+            <h1 class="display-4 justify-content-center"> Videojuegos</h1>
             <div class="row">
 
 
@@ -81,7 +50,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><%=x.getNompro()%></h5>
                             <p class="card-text"><%=x.getPrecio()%></p>
-                            <a href="#" class="btn btn-primary">AÑADIR A CARRITO</a>
+                            <a href="servlet?opc=4&cod=<%=x.getIdproducto()%>" class="btn btn-primary">AÑADIR A CARRITO</a>
                         </div>
                     </div>
                     <%}%> 
@@ -102,47 +71,8 @@
             </div>  
         </div>
 
-        <nav class="navbar navbar-expand-lg bg-dark">
-            <div class="card text-center container-fluid" id="div-transparencia">
-                <div class="card_header">
-                    <p class="text-white">
-                        Aquí encontrarás información sobre nosotros
-                    </p>
-                </div>
-                <div class="card-body" id="div-transparencia">
-                    <div class="container d-flex justify-content-center" id="navbarNavAltMarkup">
-                        <div class="card text-white mx-5" id="footer-bg-img" style="width: 7rem;">
-                            <img src="Img/whatsapp.png" class="card-img-top mx-auto" style="width: 3rem;">
-                            <div class="card-body" style="width: 7rem">
-                                <h5 class="card-title fs-6"">Whatsapp</h5>
-                            </div>
-                        </div>
-                        <div class="card text-white mx-5" id="footer-bg-img" style="width: 7rem;">
-                            <img src="Img/facebook.png" class="card-img-top mx-auto" style="width: 3rem;">
-                            <div class="card-body" style="width: 7rem;">
-                                <h5 class="card-title fs-6">Facebook</h5>
-                            </div>
-                        </div>
-                        <div class="card text-white mx-5" id="footer-bg-img" style="width: 7rem;">
-                            <img src="Img/social.png" class="card-img-top mx-auto" style="width: 3rem;">
-                            <div class="card-body" style="width: 7rem;">
-                                <h5 class="card-title fs-6">Instagram</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-footer" id="div-transparencia">
-                    <p class="text-white">
-                        @CopyrRight
-                    </p>
-                </div>
-            </div>
-        </nav>
-
-
-
-
+        
+         <%@include file="footer.jsp" %>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
                 crossorigin="anonymous">

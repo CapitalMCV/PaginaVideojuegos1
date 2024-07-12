@@ -30,9 +30,7 @@
 
             .background img {
                 width: 100%;
-                height: auto;
-                opacity: 0.9;
-
+                height: auto;            
             }
 
             .container-1 {
@@ -91,21 +89,14 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-custom-purple">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fas fa-home"></i> Virtual Game<span class="sr-only">(current)</span></a>
-                </li>
-
-            </ul>
-        </nav>
+        <%@include file="headerSecundario.jsp" %>
 
         <div class="container">
             <main>
                 <div class="row justify-content-center">
-                    <div class="col-md-6 registro-container">
+                    <div class="col-md-6 mt-5 registro-container">
                         <form action="controlCliente?opc=2" method="post">
-                            <h3 class="text-center mb-4">Regístrateee</h3>
+                            <h3 class="text-center mb-4">Regístrate</h3>
                             <div class="row">
                                 <div class="col">
                                     <div class="group">

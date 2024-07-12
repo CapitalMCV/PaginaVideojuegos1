@@ -20,6 +20,10 @@
         <servlet-name>servlet</servlet-name>
         <servlet-class>controlador.servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>generaQr</servlet-name>
+        <servlet-class>controlador.generaQr</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>adminProducto</servlet-name>
         <url-pattern>/adminProducto</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>servlet</servlet-name>
         <url-pattern>/servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>generaQr</servlet-name>
+        <url-pattern>/generaQr</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

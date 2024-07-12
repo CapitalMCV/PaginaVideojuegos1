@@ -119,77 +119,45 @@ public class usuarioDao {
         }
     }
 
-    public boolean autenticar(String username, String password) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        boolean autenticado = false;
+    public usuario autenticar(String username, String password) {
+        usuario u = null;
+        Connection cn = MySQLConexion.getConexion();
 
         try {
-            con = MySQLConexion.getConexion();
-            String query = "SELECT * FROM Usuarios WHERE username = ? AND password = ?";
-            ps = con.prepareStatement(query);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            rs = ps.executeQuery();
+            String sql = "select Nombres,apellidos "
+                    + " from usuarios where username=? and password=?";
+            PreparedStatement st = cn.prepareStatement(sql);
+            st.setString(1, username);
+            st.setString(2, password);
+            ResultSet rs = st.executeQuery();
 
-            autenticado = rs.next(); // Si rs.next() es verdadero, significa que hay al menos una fila coincidente, es decir, credenciales válidas.
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if (rs.next()) {
+                u = new usuario();
+                u.setCodu(username);
+                u.setApellidos(rs.getString(2));
+                u.setNombres(rs.getString(1));
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-
-        return autenticado;
+        return u;
     }
 
     public String obtenerRol(String username) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
         String rol = null;
-
+        Connection cn = MySQLConexion.getConexion();
         try {
-            con = MySQLConexion.getConexion();
-            String query = "SELECT idRol FROM Usuarios WHERE username = ?";
-            ps = con.prepareStatement(query);
-            ps.setString(1, username);
-            rs = ps.executeQuery();
+            String sql = "SELECT idRol FROM Usuarios WHERE username = ?";
+            PreparedStatement st = cn.prepareStatement(sql);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
                 rol = rs.getString("idRol");
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            // Cerrar recursos
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
         }
-
         return rol;
     }
 
@@ -199,7 +167,7 @@ public class usuarioDao {
         try {
             String sql = "{call spadiUsuCliente(?,?,?,?,?,?)}";
             CallableStatement st = cn.prepareCall(sql);
-            st.setString(1, "R02"); 
+            st.setString(1, "R02");
             st.setString(2, a.getUsername());
             st.setString(3, a.getApellidos());
             st.setString(4, a.getNombres());
@@ -212,4 +180,31 @@ public class usuarioDao {
         }
     }
 
+    public String grabaFactura(List<Compra> lista, String codu) {
+        String fac = "";
+        double smt = 0;
+        for (Compra x : lista) {
+            smt = smt + x.total();
+        }
+        Connection cn = MySQLConexion.getConexion();
+        try {
+            CallableStatement st = cn.prepareCall("{call spfactura(?,?)}");
+            st.setString(1, codu);
+            st.setDouble(2, smt);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            fac = rs.getString(1);
+            CallableStatement st2 = cn.prepareCall("{call spdetalle(?,?,?)}");
+            for (Compra c : lista) {
+                st2.setString(1, fac);
+                st2.setString(2, c.getIdproducto());
+                st2.setInt(3, c.getCantidad());
+                st2.executeUpdate();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return fac;
+    }
 }

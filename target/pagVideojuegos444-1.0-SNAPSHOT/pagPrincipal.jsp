@@ -139,40 +139,7 @@
                         <i class="bi bi-discord"></i>
                     </a>    
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mb-2" id="registro">
-                    <form id="registro-form">
-                        <h2 class="text-center">Registrate aquí</h2>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                <label>Username:</label>
-                                <input required="true" class="txt_registro" type="text" name="user">
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                <label>Nombres:</label>
-                                <input required="true" class="txt_registro" type="text" name="nom">                       
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                <label>Apellidos:</label>
-                                <input required="true" class="txt_registro" type="text" name="ape">
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                <label>Dni:</label>
-                                <input required="true" class="txt_registro" type="text" name="dni">                       
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-                                <label>Contraseña:</label>
-                                <input required="true" class="txt_registro" type="password" name="pass">                       
-                            </div>
-                        </div>
-                        <div class="col-sm-12 justify-content-center text-center">
-                            <button type="submit" class="btn-registrar">Registrar</button>
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </div>
         <%@include file="footer.jsp" %>
