@@ -216,8 +216,10 @@ public class controlCliente extends HttpServlet {
         double total = (double) ses.getAttribute("total");
         //graba la factura y el detalle
         String fac = obj.grabaFactura(lista, u.getCodu());
-        String cad = "Factura Nro :" + fac;
-        cad += "\n Cliente " + u.getApellidos() + "," + u.getNombres();
+//        String facturamattew = "00001";
+        String cad = "";
+        cad += "Factura Nro :" + fac;
+        cad += "\n Cliente: " + u.getApellidos() + "," + u.getNombres();
         cad += "\n Total Compra " + total;
         ses.setAttribute("canasta", null);
         ses.setAttribute("usuario", null);

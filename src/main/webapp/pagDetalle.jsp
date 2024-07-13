@@ -17,10 +17,11 @@
     <body>
     <center>
         
-        <%@include file="header.jsp" %>
+        
         <%
             Productos art = (Productos) request.getAttribute("dato");
         %>    
+        <%@include file="header.jsp" %>
         <h1 class="mt-5 mb-5">Venta del producto <%=art.getNompro()%></h1>
         <form method="post" name="fr">
             <input type="hidden" name="opc" value="5">

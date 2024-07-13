@@ -10,10 +10,12 @@
     </head>
     <body>
     <center>
+        
         <%
           HttpSession ses=request.getSession();
           List<Compra> lista=(ArrayList<Compra>)ses.getAttribute("canasta");
-        %>    
+        %> 
+        <%@include file="headerSecundario.jsp" %>
         <h1>Confirma compra</h1>
         <a href="controlCliente?opc=9" target="zona" class="btn btn-success">Aceptar</a>
         <a href="" class="btn btn-success">Cancelar compra</a>
@@ -26,7 +28,7 @@
              <%double sm=0;
              for(Compra x:lista){
              out.print("<tr><td>"+x.getIdproducto()+"<td>"+x.getNompro()+"<td>"+
-             x.getPrecio()+"<td>"+x.getCantidad()+"<td>"+x.total());
+             x.getPrecio()+"<td>"+x.getCantidad()+"<td>"+x.total()+"</tr>");
                  sm +=x.total();
                  }
              ses.setAttribute("total", sm);

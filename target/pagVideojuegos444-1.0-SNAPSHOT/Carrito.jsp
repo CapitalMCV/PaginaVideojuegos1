@@ -31,6 +31,7 @@
         <%
             List<Compra> lista = (ArrayList<Compra>) ses.getAttribute("canasta");
         %>
+        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-7 col-divider">

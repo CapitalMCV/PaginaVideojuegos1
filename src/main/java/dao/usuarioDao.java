@@ -180,7 +180,7 @@ public class usuarioDao {
         }
     }
 
-    public String grabaFactura(List<Compra> lista, String codu) {
+    public String grabaFactura(List<Compra> lista, String codc) {
         String fac = "";
         double smt = 0;
         for (Compra x : lista) {
@@ -189,7 +189,7 @@ public class usuarioDao {
         Connection cn = MySQLConexion.getConexion();
         try {
             CallableStatement st = cn.prepareCall("{call spfactura(?,?)}");
-            st.setString(1, codu);
+            st.setString(1, codc);
             st.setDouble(2, smt);
             ResultSet rs = st.executeQuery();
             rs.next();
